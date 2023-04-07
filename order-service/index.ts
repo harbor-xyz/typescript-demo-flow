@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 
-app.post('/', (req, res) => {
+app.post('/orders', (req, res) => {
     res.json({
         status: 'success'
     });

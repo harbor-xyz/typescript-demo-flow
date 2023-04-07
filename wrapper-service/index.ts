@@ -17,14 +17,14 @@ interface Order {
     status: String
 }
 
-app.post('/', async (req, res) => {
-    let userResult: AxiosResponse = await axios.get('http://localhost:3000');
+app.post('/wrappers', async (req, res) => {
+    let userResult: AxiosResponse = await axios.get('http://localhost:3000/users');
     let user: User = userResult.data;
 
-    let paymentResult: AxiosResponse = await axios.get('http://localhost:3001');
+    let paymentResult: AxiosResponse = await axios.get('http://localhost:3001/payments');
     let payment: Payment = paymentResult.data;
 
-    let orderResult: AxiosResponse = await axios.post('http://localhost:3002');
+    let orderResult: AxiosResponse = await axios.post('http://localhost:3002/orders');
     let order: Order = orderResult.data;
 
     return res.status(200).json({
