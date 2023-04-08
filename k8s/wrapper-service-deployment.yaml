@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wrapper-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wrapper-service
+  template:
+    metadata:
+      labels:
+        app: wrapper-service
+    spec:
+      containers:
+      - name: wrapper-service
+        image: <YOUR_DOCKERHUB_USERNAME>/wrapper-service:latest
+        ports:
+        - containerPort: 3000

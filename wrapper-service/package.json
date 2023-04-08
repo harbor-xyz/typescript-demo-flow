@@ -1,8 +1,8 @@
 {
   "name": "wrapper-service",
   "version": "1.0.0",
-  "description": "User APIs",
-  "main": "index.js",
+  "description": "User APIs",  
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
