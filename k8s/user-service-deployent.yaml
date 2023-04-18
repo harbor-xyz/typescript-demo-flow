@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: user-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: user-service
@@ -13,7 +13,9 @@ spec:
         app: user-service
     spec:
       containers:
-      - name: user-service
-        image: <YOUR_DOCKERHUB_USERNAME>/user-service:latest
+      - name: payment-service
+        image: 988772184836.dkr.ecr.ap-south-1.amazonaws.com/issue-finder:user-service
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+      - name: cr-credentials

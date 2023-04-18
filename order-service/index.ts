@@ -8,6 +8,11 @@ app.post('/orders', (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.json({
+        status: 'I am running'
+    });
+});
 
 const port = process.env.PORT || 3002;
 

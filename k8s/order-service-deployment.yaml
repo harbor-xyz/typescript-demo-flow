@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: order-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: order-service
@@ -14,6 +14,10 @@ spec:
     spec:
       containers:
       - name: order-service
-        image: <YOUR_DOCKERHUB_USERNAME>/order-service:latest
+        image: 988772184836.dkr.ecr.ap-south-1.amazonaws.com/issue-finder:order-service
+        imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 3000
+        - containerPort: 3002
+      imagePullSecrets:
+      - name: cr-credentials
+

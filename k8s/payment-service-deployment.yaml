@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: payment-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: payment-service
@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - name: payment-service
-        image: <YOUR_DOCKERHUB_USERNAME>/payment-service:latest
+        image: 988772184836.dkr.ecr.ap-south-1.amazonaws.com/issue-finder:payment-svc
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
+      imagePullSecrets:
+      - name: cr-credentials

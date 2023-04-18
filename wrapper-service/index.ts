@@ -17,14 +17,14 @@ interface Order {
     status: String
 }
 
-app.post('/wrappers', async (req, res) => {
-    let userResult: AxiosResponse = await axios.get('http://localhost:3000/users');
+app.post('/pwrappers', async (req, res) => {
+    let userResult: AxiosResponse = await axios.get('http://user-service.exp2-testing-manual.svc.cluster.local:80/users/');
     let user: User = userResult.data;
 
-    let paymentResult: AxiosResponse = await axios.get('http://localhost:3001/payments');
+    let paymentResult: AxiosResponse = await axios.get('http://payment-service.exp2-testing-manual.svc.cluster.local:80/payments/');
     let payment: Payment = paymentResult.data;
 
-    let orderResult: AxiosResponse = await axios.post('http://localhost:3002/orders');
+    let orderResult: AxiosResponse = await axios.post('http://order-service.exp2-testing-manual.svc.cluster.local:80/orders/');
     let order: Order = orderResult.data;
 
     return res.status(200).json({
@@ -34,14 +34,15 @@ app.post('/wrappers', async (req, res) => {
     });
 });
 
-app.get('/wrappers', async (req, res) => {
-    let userResult: AxiosResponse = await axios.get('http://localhost:3000/users');
+app.get('/gwrappers', async (req, res) => {
+    console.log("I'm getting called");
+    let userResult: AxiosResponse = await axios.get('http://user-service.exp2-testing-manual.svc.cluster.local:80/users/');
     let user: User = userResult.data;
 
-    let paymentResult: AxiosResponse = await axios.get('http://localhost:3001/payments');
+    let paymentResult: AxiosResponse = await axios.get('http://payment-service.exp2-testing-manual.svc.cluster.local:80/payments/');
     let payment: Payment = paymentResult.data;
 
-    let orderResult: AxiosResponse = await axios.post('http://localhost:3002/orders');
+    let orderResult: AxiosResponse = await axios.post('http://order-service.exp2-testing-manual.svc.cluster.local:80/orders/');
     let order: Order = orderResult.data;
 
     return res.status(200).json({
